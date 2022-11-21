@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
+            $table->string('user_id');
+
             $table->string('location');
             $table->string('logo');
             $table->string('website');

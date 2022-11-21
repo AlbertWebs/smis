@@ -1,49 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from jthemes.net/themes/html/wizard-form/v3/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Sep 2022 08:59:46 GMT -->
 <head>
     <meta charset="utf-8">
-    <title>Wizard V3</title>
+    <title>S.M.I.S</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/fontawesome-all.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/style.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/colors/switch.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/assets/css/colors/switch.css')}}">
     <!-- Color Alternatives -->
-    <link href="assets/css/colors/color-2.css" rel="alternate stylesheet" type="text/css" title="color-2">
-    <link href="assets/css/colors/color-3.css" rel="alternate stylesheet" type="text/css" title="color-3">
-    <link href="assets/css/colors/color-4.css" rel="alternate stylesheet" type="text/css" title="color-4">
-    <link href="assets/css/colors/color-5.css" rel="alternate stylesheet" type="text/css" title="color-5">
+    <link href="{{asset('theme/assets/css/colors/color-2.css')}}" rel="alternate stylesheet" type="text/css" title="color-2">
+    <link href="{{asset('theme/assets/css/colors/color-3.css')}}" rel="alternate stylesheet" type="text/css" title="color-3">
+    <link href="{{asset('theme/assets/css/colors/color-4.css')}}" rel="alternate stylesheet" type="text/css" title="color-4">
+    <link href="{{asset('theme/assets/css/colors/color-5.css')}}" rel="alternate stylesheet" type="text/css" title="color-5">
 
 </head>
 
 <body>
 
     <!-- This code is use for color chooser, you can delete -->
-    <div id="switch-color" class="color-switcher">
-        <div class="open"><i class="fas fa-cog"></i></div>
-        <h4>COLOR OPTION</h4>
-        <ul>
-            <li><a class="color-2" onclick="setActiveStyleSheet('color-2'); return false;" href="#"><i class="fas fa-cog"></i></a> </li>
-            <li><a class="color-3" onclick="setActiveStyleSheet('color-3'); return false;" href="#"><i class="fas fa-cog"></i></a> </li>
-            <li><a class="color-4" onclick="setActiveStyleSheet('color-4'); return false;" href="#"><i class="fas fa-cog"></i></a> </li>
-            <li><a class="color-5" onclick="setActiveStyleSheet('color-5'); return false;" href="#"><i class="fas fa-cog"></i></a> </li>
-        </ul>
-    </div>
+
     <div class="clearfix"></div>
 
 
     <div class="wrapper wizard d-flex clearfix multisteps-form position-relative">
         <div class="steps order-2 position-relative w-25">
             <div class="multisteps-form__progress">
-                <span class="multisteps-form__progress-btn js-active" title="Application data"><i class="far fa-user"></i><span>Personal information</span></span>
+                <span class="multisteps-form__progress-btn js-active" title="Application data"><i class="far fa-user"></i><span>Basic information</span></span>
                 <span class="multisteps-form__progress-btn" title="Tax residency"><i class="far fa-user"></i><span>Solution Provider</span></span>
                 <span class="multisteps-form__progress-btn" title="Indentity documents"><i class="far fa-user"></i><span>Personal information</span></span>
-                <span class="multisteps-form__progress-btn" title="Investability"><i class="far fa-user"></i><span>Choose a payment</span></span>
+                <span class="multisteps-form__progress-btn" title="Investability"><i class="far fa-user"></i><span>Choose Required Modules</span></span>
                 <span class="multisteps-form__progress-btn" title="Review"><i class="far fa-user"></i><span>Review </span></span>
             </div>
         </div>
@@ -62,21 +51,20 @@
                                     <label for="files">Upload Image</label>
                                     <input id="files" type='file' onchange="readURL(this);" style="display: none;">
                                     <div class="display-img text-center">
-                                        <img id="profile-image" src="assets/img/pf1.png" alt="your image" />
+                                        <img id="profile-image" src="{{asset('theme/assets/img/pf1.png')}}" alt="your image" />
                                     </div>
                                 </div>
-                                <div class="photo-upload-text">
-                                    has been a while. I would like to present you the project I work on a few
+                                <div class="photo-upload-text">has been a while. I would like to present you the project I work on a few
                                 </div>
                             </div>
                             <div class="wizard-form-field mb-85">
                                 <div class="wizard-form-input">
                                     <label>Name</label>
-                                    <input type="text" name="name">
+                                    <input type="text" value="{{Auth::User()->name}}" name="name">
                                 </div>
                                 <div class="wizard-form-input">
                                     <label>Email</label>
-                                    <input type="email" name="email">
+                                    <input type="email" value="{{Auth::User()->email}}" name="email">
                                 </div>
                                 <div class="wizard-form-input mb-60 mt-60">
                                     <div class="line"></div>
@@ -87,53 +75,44 @@
                                         <label class="checkbox-circle">
                                             <input type="radio" checked="checked" name="student_type" value="University Student">
                                             <span class="checkmark"></span>
-                                            University Student
+                                            University
                                         </label>
                                     </div>
                                     <div class="wizard-checked">
                                         <label class="checkbox-circle">
                                             <input type="radio" name="student_type" value="Professional">
                                             <span class="checkmark"></span>
-                                            Professional
+                                            Tertiary
+                                        </label>
+                                    </div>
+                                    <div class="wizard-checked">
+                                        <label class="checkbox-circle">
+                                            <input type="radio" name="student_type" value="Professional">
+                                            <span class="checkmark"></span>
+                                            High School
                                         </label>
                                     </div>
                                 </div>
                                 <div class="wizard-form-input">
-                                    <label>University</label>
-                                    <input type="email" name="email">
+                                    <label>Org-Name</label>
+                                    <input type="email" name="org_name">
                                 </div>
                                 <div class="wizard-form-input">
-                                    <label>Major</label>
-                                    <input type="email" name="email">
+                                    <label>Org-Email</label>
+                                    <input type="email" name="org_email">
                                 </div>
                                 <div class="wizard-form-input">
-                                    <label>Graduation Date</label>
-                                    <input type="email" name="email">
+                                    <label>Org-Mobile</label>
+                                    <input type="text" name="org_mobile">
+                                </div>
+                                <div class="wizard-form-input">
+                                    <label>Org-Location</label>
+                                    <input type="text" name="org_mobile">
                                 </div>
                                 <div class="wizard-form-input mb-60 mt-60">
                                     <div class="line"></div>
                                 </div>
-                                <div class="wizard-form-input">
-                                    <label>Do you have a Tax ID?</label>
-                                    <div class="wizard-checked">
-                                        <label class="checkbox-circle">
-                                            <input type="radio" checked="checked" name="ssn" value="I Have a US Tax ID (SSN)">
-                                            <span class="checkmark"></span>
-                                            <span>I Have a US Tax ID (SSN)</span>
-                                        </label>
-                                    </div>
-                                    <div class="wizard-checked">
-                                        <label class="checkbox-circle">
-                                            <input type="radio" name="ssn" value="I Don't have a US Tax ID (SSN)">
-                                            <span class="checkmark"></span>
-                                            <span>I don’t have a US Tax ID (SSN)</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-field-text">has been a while. I would like to present you the
-                                    project I work on a few
-                                    months ago.
-                                </div>
+
                             </div>
                             <div class="wizard-v3-progress">
                                 <span>1 to 5 step</span>
@@ -146,7 +125,7 @@
                         </div>
                         <!-- /.inner -->
                         <div class="vector-img-one">
-                            <img src="assets/img/vb1.png" alt="">
+                            <img src="{{asset('theme/assets/img/vb1.png')}}" alt="">
                         </div>
                         <div class="actions">
                             <ul>
@@ -170,7 +149,7 @@
                                             <input type="checkbox" class="checkbox">
                                             <span class="option_inner">
                                                 <span class="tickmark"></span>
-                                                <span class="icon"><img src="assets/img/d1.png" alt=""></span>
+                                                <span class="icon"><img src="{{asset('theme/assets/img/d1.png')}}" alt=""></span>
                                                 <span class="name">Minuteman Maintenance</span>
                                             </span>
                                         </label>
@@ -180,7 +159,7 @@
                                             <input type="checkbox" class="checkbox">
                                             <span class="option_inner">
                                                 <span class="tickmark"></span>
-                                                <span class="icon"><img src="assets/img/d1.png" alt=""></span>
+                                                <span class="icon"><img src="{{asset('theme/assets/img/d1.png')}}" alt=""></span>
                                                 <span class="name">Minuteman Maintenance</span>
                                             </span>
                                         </label>
@@ -190,7 +169,7 @@
                                             <input type="checkbox" class="checkbox">
                                             <span class="option_inner">
                                                 <span class="tickmark"></span>
-                                                <span class="icon"><img src="assets/img/d1.png" alt=""></span>
+                                                <span class="icon"><img src="{{asset('theme/assets/img/d1.png')}}" alt=""></span>
                                                 <span class="name">Minuteman Maintenance</span>
                                             </span>
                                         </label>
@@ -233,7 +212,7 @@
                         </div>
                         <!-- /.inner -->
                         <div class="vector-img-one">
-                            <img src="assets/img/vb2.png" alt="">
+                            <img src="{{asset('theme/assets/img/vb2.png')}}" alt="">
                         </div>
                         <div class="actions">
                             <ul>
@@ -356,7 +335,7 @@
                         </div>
                         <!-- ./inner -->
                         <div class="vector-img-one">
-                            <img src="assets/img/vb3.png" alt="">
+                            <img src="{{asset('theme/assets/img/vb3.png')}}" alt="">
                         </div>
                         <div class="actions">
                             <ul>
@@ -372,7 +351,7 @@
                         <div class="inner pb-200 clearfix">
                             <div class="wizard-title text-center">
                                 <h3>Choose Service Provider</h3>
-                                <p>has been a while. I would like to present you the project I work </p>
+                                <p>You can always update this after this setup </p>
                             </div>
                             <div id="slider-service" class="wizard-service-slide">
                                 <label class="services-box-item">
@@ -380,10 +359,10 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws1.png" alt="">
+                                            <img src="{{asset('theme/assets/img/ws1.png')}}" alt="">
                                         </span>
                                         <span class="service-text">
-                                            Mr Leo
+                                            Enrolments
                                         </span>
                                         <span class="option-seclect">
                                             <span>Selected</span>
@@ -395,10 +374,10 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Jim Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws2.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws2.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
-                                            Mr Jim
+                                            Billings
                                         </span>
                                         <span class="option-seclect">
                                             <span>Selected</span>
@@ -410,10 +389,10 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mrs Katie Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws3.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws3.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
-                                            Mrs Katie
+                                            Exams
                                         </span>
                                         <span class="option-seclect">
                                             <span>Selected</span>
@@ -425,10 +404,10 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Doe Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws4.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws4.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
-                                            Mr Doe
+                                            E-Learning
                                         </span>
                                         <span class="option-seclect">
                                             <span>Selected</span>
@@ -440,10 +419,10 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws5.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws5.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
-                                            Mr Leo
+                                            Attendace
                                         </span>
                                         <span class="option-seclect">
                                             <span>Selected</span>
@@ -455,10 +434,10 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Jone Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws6.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws6.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
-                                            Mr Jone
+                                            Portal
                                         </span>
                                         <span class="option-seclect">
                                             <span>Selected</span>
@@ -470,22 +449,7 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws1.png" alt="">
-                                        </span>
-                                        <span class="service-text">
-                                            Mr Leo
-                                        </span>
-                                        <span class="option-seclect">
-                                            <span>Selected</span>
-                                        </span>
-                                    </span>
-                                </label>
-                                <label class="services-box-item">
-                                    <input type="checkbox" name="contact_person" value="Mr Leo" class="service-checkbox">
-                                    <span class="w-service-box text-center position-relative">
-                                        <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
-                                        <span class="service-icon">
-                                            <img src="assets/img/ws2.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws1.png')}}" alt="">
                                         </span>
                                         <span class="service-text">
                                             Mr Leo
@@ -500,7 +464,7 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws3.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws2.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
                                             Mr Leo
@@ -515,7 +479,7 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws4.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws3.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
                                             Mr Leo
@@ -530,7 +494,7 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws5.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws4.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
                                             Mr Leo
@@ -545,7 +509,22 @@
                                     <span class="w-service-box text-center position-relative">
                                         <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
                                         <span class="service-icon">
-                                            <img src="assets/img/ws6.jpg" alt="">
+                                            <img src="{{asset('theme/assets/img/ws5.jpg')}}" alt="">
+                                        </span>
+                                        <span class="service-text">
+                                            Mr Leo
+                                        </span>
+                                        <span class="option-seclect">
+                                            <span>Selected</span>
+                                        </span>
+                                    </span>
+                                </label>
+                                <label class="services-box-item">
+                                    <input type="checkbox" name="contact_person" value="Mr Leo" class="service-checkbox">
+                                    <span class="w-service-box text-center position-relative">
+                                        <span class="tooltip-info" data-toggle="tooltip" data-placement="top" title="Mr Leo Service officer"></span>
+                                        <span class="service-icon">
+                                            <img src="{{asset('theme/assets/img/ws6.jpg')}}" alt="">
                                         </span>
                                         <span class="service-text">
                                             Mr Leo
@@ -567,7 +546,7 @@
                         </div>
                         <!-- /.inner -->
                         <div class="vector-img-one">
-                            <img src="assets/img/vb4.png" alt="">
+                            <img src="{{asset('theme/assets/img/vb4.png')}}" alt="">
                         </div>
                         <div class="actions">
                             <ul>
@@ -638,7 +617,7 @@
                         </div>
                         <!-- /.inner -->
                         <div class="vector-img-one position-relative">
-                            <img src="assets/img/vb5.png" alt="">
+                            <img src="{{asset('theme/assets/img/vb5.png')}}" alt="">
                         </div>
                         <div class="actions mt-60">
                             <ul>
@@ -651,12 +630,12 @@
             </div>
         </form>
     </div>
-    <script src="assets/js/jquery-3.3.1.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/switch.js"></script>
+    <script src="{{asset('theme/assets/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('theme/assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('theme/assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('theme/assets/js/slick.min.js')}}"></script>
+    <script src="{{asset('theme/assets/js/main.js')}}"></script>
+    <script src="{{asset('theme/assets/js/switch.js')}}"></script>
     <script>
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -679,5 +658,4 @@
 </body>
 
 
-<!-- Mirrored from jthemes.net/themes/html/wizard-form/v3/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 04 Sep 2022 08:59:57 GMT -->
 </html>

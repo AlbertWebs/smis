@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,12 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //check if setup is complete
         $Available = DB::table('organizations')->where('user_id',Auth::User()->id)->get();
+        // dd($Available);
         if($Available->isEmpty()){
             return view('front.index');
         }else{
             return view('front.dashboard');
         }
+    }
+
+    public function dashboard()
+    {
+        return view('front.dashboard');
     }
 }
